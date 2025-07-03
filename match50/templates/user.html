@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome | Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at center, #0f172a 0%, #1e293b 100%);
+      color: #e0e7ff;
+    }
+
+    .glass {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.4);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .neon-button {
+      background: linear-gradient(145deg, #8b5cf6, #7c3aed);
+      transition: 0.3s;
+    }
+
+    .neon-button:hover {
+      box-shadow: 0 0 30px #c084fc, 0 0 50px #c084fc;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-6">
+
+  <div class="glass rounded-3xl w-full max-w-3xl p-10 text-center space-y-8">
+    <h1 class="text-4xl font-extrabold text-purple-300 animate-pulse">Welcome, {{ name }}!</h1>
+
+    <p class="text-lg text-purple-100">Ready to uncover your personality and meet your perfect match?</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <a href="/test" class="neon-button py-4 rounded-xl font-semibold text-white text-lg">Take Personality Test</a>
+      <a href="/match" class="neon-button py-4 rounded-xl font-semibold text-white text-lg">Find Matches</a>
+    </div>
+
+    <a href="/" class="block text-sm text-purple-200 hover:underline mt-8">← Log Out</a>
+  </div>
+
+</body>
+</html>

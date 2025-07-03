@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personality Test | Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: #f3f4f6;
+    }
+
+    .glass {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(20px);
+      border-radius: 1.5rem;
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .question {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .question:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #8b5cf6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .submit-btn {
+      background: linear-gradient(to right, #8b5cf6, #7c3aed);
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 30px #c084fc;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center py-12 px-4 min-h-screen">
+
+  <form action="/submit" method="post" class="glass w-full max-w-4xl p-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-purple-400 text-center mb-8">🧠 Personality Assessment</h1>
+
+    {% for i in range(1, 21) %}
+    <div class="question">
+      <label class="block font-semibold mb-2 text-purple-300">Q{{ i }}. Your response (1 to 5):</label>
+      <select name="q{{ i }}" required
+        class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-purple-400 focus:outline-none">
+        <option value="">Select</option>
+        <option value="1">Strongly Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="3">Neutral</option>
+        <option value="4">Agree</option>
+        <option value="5">Strongly Agree</option>
+      </select>
+    </div>
+    {% endfor %}
+
+    <div class="text-center mt-10">
+      <button type="submit" class="submit-btn">🎯 Submit Test</button>
+    </div>
+  </form>
+
+</body>
+</html>

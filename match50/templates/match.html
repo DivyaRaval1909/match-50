@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Matches | Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: #e0e7ff;
+    }
+
+    .glass {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 0 50px rgba(139, 92, 246, 0.3);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .match-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      transition: 0.3s;
+    }
+
+    .match-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px #a78bfa;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-12">
+
+  <div class="glass w-full max-w-4xl text-center space-y-8">
+    <h1 class="text-4xl font-bold text-purple-400">Your Personality Type: <span class="text-white">{{ type }}</span></h1>
+    <p class="text-lg text-purple-200">Here are some people who match your vibe 🌟</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+      {% for email in matches %}
+        <div class="match-card">
+          <h2 class="text-lg font-semibold text-white">{{ email }}</h2>
+          <p class="text-sm text-purple-300 mt-1">Perfect personality sync 💫</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a href="/hpage" class="text-purple-300 hover:underline mt-10 block">← Back to Dashboard</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Your Interests - Match50</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-bl from-pink-100 to-indigo-200 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-2xl p-10 bg-white/30 backdrop-blur-md border border-white/50 shadow-2xl rounded-2xl animate-fade-in">
+        <h2 class="text-3xl font-bold text-center text-indigo-800 mb-6">Choose Your Interests</h2>
+
+        <form action="/interest" method="post" class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="interests" value="sports" class="accent-indigo-600">
+                <span>Sports</span>
+            </label>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="interests" value="music" class="accent-indigo-600">
+                <span>Music</span>
+            </label>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="interests" value="technology" class="accent-indigo-600">
+                <span>Technology</span>
+            </label>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="interests" value="travel" class="accent-indigo-600">
+                <span>Travel</span>
+            </label>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="interests" value="gaming" class="accent-indigo-600">
+                <span>Gaming</span>
+            </label>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="interests" value="reading" class="accent-indigo-600">
+                <span>Reading</span>
+            </label>
+
+            <div class="sm:col-span-2 mt-6">
+                <button type="submit"
+                        class="w-full py-3 bg-indigo-600 text-white rounded-xl text-lg hover:bg-indigo-700 transition-all duration-300">
+                    Save Interests
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.7s ease-out forwards;
+        }
+    </style>
+
+</body>
+</html>

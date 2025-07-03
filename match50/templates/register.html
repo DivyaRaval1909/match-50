@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at top left, #1f2937, #111827);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(31, 41, 55, 0.7);
+      box-shadow: 0 0 40px rgba(129, 140, 248, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      animation: fade-in 1s ease-out forwards;
+    }
+
+    .neon-input:focus {
+      box-shadow: 0 0 10px #8b5cf6, 0 0 30px #8b5cf6;
+      outline: none;
+    }
+
+    .neon-button {
+      background: linear-gradient(90deg, #7c3aed, #9333ea);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .neon-button:hover {
+      box-shadow: 0 0 15px #c084fc, 0 0 30px #c084fc;
+      transform: scale(1.03);
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-4xl p-10 glass rounded-3xl text-white">
+    <h2 class="text-4xl font-extrabold text-center text-purple-300 mb-10 tracking-wide">Create Your Account</h2>
+
+    <form action="/register" method="post" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+      <div>
+        <label class="block mb-1 text-purple-200">Username</label>
+        <input type="text" name="rname" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500 focus:ring-2 focus:ring-purple-400" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Email</label>
+        <input type="email" name="email" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500 focus:ring-2 focus:ring-purple-400" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Password</label>
+        <input type="password" name="rpassword" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Confirm Password</label>
+        <input type="password" name="cpassword" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Date (1–31)</label>
+        <input type="number" name="date" min="1" max="31" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Month</label>
+        <select name="month" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500">
+          <option value="">Select Month</option>
+          <option>January</option><option>February</option><option>March</option>
+          <option>April</option><option>May</option><option>June</option>
+          <option>July</option><option>August</option><option>September</option>
+          <option>October</option><option>November</option><option>December</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Year</label>
+        <input type="number" name="year" min="1950" max="2025" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Gender</label>
+        <select name="gender" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500">
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="col-span-1 md:col-span-2 mt-4">
+        <button type="submit"
+          class="w-full py-3 neon-button text-white text-lg rounded-2xl font-bold">
+          Register Now
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-6 text-center text-sm text-purple-300">
+      Already have an account? <a href="/login" class="hover:underline text-purple-400 font-medium">Login here</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at bottom right, #1f2937, #111827);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(31, 41, 55, 0.75);
+      box-shadow: 0 0 40px rgba(129, 140, 248, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      animation: zoom-in 1s ease-out forwards;
+    }
+
+    .neon-input:focus {
+      box-shadow: 0 0 10px #8b5cf6, 0 0 25px #8b5cf6;
+      outline: none;
+    }
+
+    .neon-button {
+      background: linear-gradient(90deg, #7c3aed, #9333ea);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .neon-button:hover {
+      box-shadow: 0 0 18px #c084fc, 0 0 35px #c084fc;
+      transform: scale(1.05);
+    }
+
+    @keyframes zoom-in {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-xl p-10 glass rounded-3xl text-white">
+    <h2 class="text-4xl font-extrabold text-center text-purple-300 mb-8 tracking-wide">Welcome Back</h2>
+
+    <form action="/login" method="post" class="space-y-6 text-sm">
+      <div>
+        <label class="block mb-1 text-purple-200">Username</label>
+        <input type="text" name="lname" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500 focus:ring-2 focus:ring-purple-400" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-purple-200">Password</label>
+        <input type="password" name="lpassword" required
+          class="w-full p-3 neon-input rounded-xl bg-gray-800 text-white border border-purple-500" />
+      </div>
+
+      <div>
+        <button type="submit"
+          class="w-full py-3 neon-button text-white text-lg rounded-2xl font-bold">
+          Login
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-6 text-center text-sm text-purple-300">
+      Don’t have an account? <a href="/register" class="hover:underline text-purple-400 font-medium">Register here</a>
+    </div>
+  </div>
+</body>
+</html>
