@@ -8,54 +8,65 @@
   <style>
     body {
       background: linear-gradient(to right, #0f172a, #1e293b);
-      color: #e0e7ff;
+      color: #f1f5f9;
     }
 
     .glass {
-      background: rgba(30, 41, 59, 0.6);
-      backdrop-filter: blur(16px);
+      background-color: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(18px);
       border-radius: 1.5rem;
       padding: 2rem;
-      box-shadow: 0 0 50px rgba(139, 92, 246, 0.3);
-      animation: fadeIn 0.8s ease-in-out;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+      animation: fadeInSlide 0.6s ease-out;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .match-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background-color: rgba(255, 255, 255, 0.05);
       border-radius: 1rem;
-      padding: 1rem 1.5rem;
-      transition: 0.3s;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
     }
 
     .match-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px #a78bfa;
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .emoji {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4 py-12">
+<body class="flex items-center justify-center min-h-screen px-4 py-12">
 
-  <div class="glass w-full max-w-4xl text-center space-y-8">
-    <h1 class="text-4xl font-bold text-purple-400">Your Personality Type: <span class="text-white">{{ type }}</span></h1>
-    <p class="text-lg text-purple-200">Here are some people who match your vibe 🌟</p>
+  <div class="glass w-full max-w-4xl">
+    <h1 class="text-3xl md:text-4xl font-bold text-center text-purple-300 mb-8">💖 Your Personality Matches</h1>
+    <p class="text-center text-lg mb-6">Your type: <span class="font-semibold text-purple-200">{{ type }}</span></p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
-      {% for email in matches %}
-        <div class="match-card">
-          <h2 class="text-lg font-semibold text-white">{{ email }}</h2>
-          <p class="text-sm text-purple-300 mt-1">Perfect personality sync 💫</p>
+    {% if matches %}
+      {% for match in matches %}
+        <div class="match-card flex justify-between items-center">
+          <div>
+            <p class="text-lg font-semibold text-purple-100"><span class="emoji">📧</span>{{ match }}</p>
+            <p class="text-sm text-purple-400">Compatible Personality: {{ type }}</p>
+          </div>
+          <a href="mailto:{{ match }}" class="text-purple-300 hover:underline">Contact</a>
         </div>
       {% endfor %}
-    </div>
+    {% else %}
+      <p class="text-center text-gray-300">No matches found yet 😢</p>
+    {% endif %}
 
-    <a href="/hpage" class="text-purple-300 hover:underline mt-10 block">← Back to Dashboard</a>
+    <div class="text-center mt-6">
+      <a href="/hpage" class="text-purple-400 hover:underline">← Back to Dashboard</a>
+    </div>
   </div>
 
 </body>

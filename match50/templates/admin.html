@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel | Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: #f1f5f9;
+    }
+
+    .glass {
+      background-color: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(14px);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+      animation: slideFade 0.8s ease;
+    }
+
+    @keyframes slideFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .status-pill {
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .status-complete {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .status-pending {
+      background-color: #f59e0b;
+      color: white;
+    }
+
+    .table-scroll {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen px-4 py-12">
+
+  <div class="glass w-full max-w-6xl">
+    <h1 class="text-3xl md:text-4xl font-bold text-center text-purple-400 mb-6">🛡️ Admin Dashboard</h1>
+
+    <div class="table-scroll">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="text-purple-300 border-b border-gray-600">
+            <th class="py-3 px-4">Username</th>
+            <th class="py-3 px-4">Email</th>
+            <th class="py-3 px-4">Test Status</th>
+            <th class="py-3 px-4">Personality</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr class="border-b border-gray-700 hover:bg-gray-800 transition">
+            <td class="py-3 px-4 font-medium">{{ user.rname }}</td>
+            <td class="py-3 px-4 text-sm text-gray-300">{{ user.email }}</td>
+            <td class="py-3 px-4">
+              {% if user.perd %}
+                <span class="status-pill status-complete">Completed</span>
+              {% else %}
+                <span class="status-pill status-pending">Pending</span>
+              {% endif %}
+            </td>
+            <td class="py-3 px-4 font-semibold text-purple-300">
+              {{ user.perd or "—" }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

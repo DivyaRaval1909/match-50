@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test History | Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: #f8fafc;
+    }
+
+    .glass {
+      background: rgba(30, 41, 59, 0.75);
+      backdrop-filter: blur(14px);
+      border-radius: 1rem;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .score-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .score-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #8b5cf6;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-10">
+
+  <div class="glass max-w-4xl w-full p-8">
+    <h2 class="text-3xl font-bold text-purple-400 text-center mb-8">🗂️ Past Personality Tests</h2>
+
+    {% if history %}
+      <div class="grid md:grid-cols-2 gap-6">
+        {% for test in history %}
+        <div class="score-box">
+          <p class="text-lg"><span class="text-purple-300 font-semibold">Date:</span> {{ test.date }}</p>
+          <p><span class="text-purple-300">Result:</span> {{ test.result }}</p>
+          <p><span class="text-purple-300">Scores:</span> {{ test.scores }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-center text-gray-400">No previous tests found. Take your first test to get started!</p>
+    {% endif %}
+  </div>
+
+</body>
+</html>

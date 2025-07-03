@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Profile | Match50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #0f172a, #1e293b);
+      color: #f8fafc;
+    }
+
+    .glass {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(16px);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .btn-purple {
+      background: linear-gradient(to right, #8b5cf6, #7c3aed);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-purple:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 0 25px #c084fc;
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen px-4">
+
+  <div class="glass max-w-lg w-full">
+    <h2 class="text-3xl font-bold text-purple-400 mb-6 text-center">👤 Your Profile</h2>
+
+    <div class="flex flex-col items-center space-y-4 mb-6">
+      {% if avatar %}
+        <img src="{{ url_for('static', filename='avatars/' + avatar) }}" alt="Avatar"
+          class="w-32 h-32 rounded-full ring-4 ring-purple-500 shadow-lg" />
+      {% else %}
+        <div class="w-32 h-32 rounded-full bg-gray-700 flex items-center justify-center text-xl text-gray-300">
+          No Avatar
+        </div>
+      {% endif %}
+
+      <form action="/upload-avatar" method="POST" enctype="multipart/form-data" class="w-full text-center">
+        <input type="file" name="avatar" accept="image/*"
+          class="text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
+                 file:bg-purple-500 file:text-white hover:file:bg-purple-600 cursor-pointer" required />
+        <button type="submit" class="btn-purple mt-4">Upload Avatar</button>
+      </form>
+    </div>
+
+    <div class="text-center text-lg mt-4">
+      <p><span class="text-purple-300">Username:</span> {{ username }}</p>
+      <p><span class="text-purple-300">Email:</span> {{ email }}</p>
+      <p><span class="text-purple-300">DOB:</span> {{ dob }}</p>
+    </div>
+  </div>
+
+</body>
+</html>
