@@ -4,6 +4,8 @@ from flask import Flask, render_template, request, redirect, session, jsonify
 from flask_session import Session
 from openai import OpenAI
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key"
@@ -11,8 +13,9 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+
 # OpenAI client initialization
-client = OpenAI(api_key="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")  # Use environment variable in production
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Use environment variable in production
 
 db = SQL("sqlite:///match50.db")
 
