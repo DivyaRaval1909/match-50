@@ -12,7 +12,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # OpenAI client initialization
-client = OpenAI(api_key="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")  # Use environment variable in production
+client = OpenAI(api_key="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")  # Use environment variable in production
 
 db = SQL("sqlite:///match50.db")
 
