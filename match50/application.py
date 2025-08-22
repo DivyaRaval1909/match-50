@@ -168,24 +168,24 @@ def admin():
     users = db.execute("SELECT * FROM registrants")
     return render_template("admin.html", users=users)
 
-@app.route("/ask-ai", methods=["POST"])
-def ask_ai():
-    user = session.get("user")
-    if not user:
-        return jsonify({"error": "unauthorized"}), 403
+# @app.route("/ask-ai", methods=["POST"])
+# def ask_ai():
+#     user = session.get("user")
+#     if not user:
+#         return jsonify({"error": "unauthorized"}), 403
 
-    msg = request.json.get("prompt")
-    try:
-        res = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a psychologist chatbot giving personality insights based on MBTI."},
-                {"role": "user", "content": msg}
-            ]
-        )
-        return jsonify({"response": res['choices'][0]['message']['content']})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+#     msg = request.json.get("prompt")
+#     try:
+#         res = openai.ChatCompletion.create(
+#             model="gpt-3.5-turbo",
+#             messages=[
+#                 {"role": "system", "content": "You are a psychologist chatbot giving personality insights based on MBTI."},
+#                 {"role": "user", "content": msg}
+#             ]
+#         )
+#         return jsonify({"response": res['choices'][0]['message']['content']})
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500
 
 
 @app.route("/ai-summary")
