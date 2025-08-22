@@ -177,16 +177,16 @@ def ask_ai():
     msg = request.json.get("prompt")
     try:
         res = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-     messages=[
+            model="gpt-3.5-turbo",
+            messages=[
                 {"role": "system", "content": "You are a psychologist chatbot giving personality insights based on MBTI."},
                 {"role": "user", "content": msg}
             ]
-)
-return jsonify({"response": res['choices'][0]['message']['content']})
-
+        )
+        return jsonify({"response": res['choices'][0]['message']['content']})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/ai-summary")
 def ai_summary_page():
