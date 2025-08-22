@@ -2,3 +2,4 @@ flask
 gunicorn
 cs50
 Flask-Session
+openai
