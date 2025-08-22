@@ -1,5 +1,6 @@
-flask
-gunicorn
-cs50
-Flask-Session
-openai
+Flask==3.0.3
+gunicorn==23.0.0
+cs50==9.3.4
+Flask-Session==0.8.0
+openai==1.40.6
+python-dotenv==1.0.1
