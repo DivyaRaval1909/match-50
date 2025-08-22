@@ -2,7 +2,7 @@ import os
 from cs50 import SQL
 from flask import Flask, render_template, request, redirect, session, jsonify
 from flask_session import Session
-from openai import OpenAI
+# from openai import OpenAI
 from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
@@ -15,7 +15,7 @@ Session(app)
 
 
 # OpenAI client initialization
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Use environment variable in production
+# client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Use environment variable in production
 
 db = SQL("sqlite:///match50.db")
 
